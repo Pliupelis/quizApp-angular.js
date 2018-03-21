@@ -1,7 +1,10 @@
 (function(){
   angular.module("quizApp").factory("quizMetrix", QuizMetrix );
 
-  function QuizMetrix(){
+  QuizMetrix.$inject = ['DataService'];
+
+
+  function QuizMetrix(DataService){
   var quizObj ={
     quizActive: false,
     changeState: changeState
@@ -12,7 +15,5 @@ function changeState(state){
   quizObj.quizActive = state;
 }
   }
-
-
 
 })();
