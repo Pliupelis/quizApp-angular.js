@@ -15,7 +15,7 @@ function ListController(quizMetrix, DataService){
   vm.search = "";
 
 function activateQuiz(){
-quizMetrix.changeState(true);
+quizMetrix.changeState("quiz",true);
 }
 
   function changeActiveTurtle(index){
