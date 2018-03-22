@@ -10,6 +10,7 @@ ResultsController.$inject = ['quizMetrix', 'DataService'];
     vm.getAnswerClass = getAnswerClass;
     vm.setActiveQuestion = setActiveQuestion;
     vm.calculatePerc = calculatePerc;
+    vm.reset = reset;
 
     function calculatePerc(){
       return quizMetrix.numCorrect / DataService.quizQuestions.length * 100;
@@ -18,6 +19,17 @@ ResultsController.$inject = ['quizMetrix', 'DataService'];
 
       function setActiveQuestion(index){
         vm.activeQuestion = index;
+      }
+
+      function reset(){
+        quizMetrix.changeState("results",false);
+        quizMetrix.numCorrect = 0;
+
+        for(var i = 0; i < DataService.quizQuestions.length; i++){
+          var data = DataService.quizQuestions[i];
+          data.selected = null;
+          data.correct = null;
+        }
       }
 
 
